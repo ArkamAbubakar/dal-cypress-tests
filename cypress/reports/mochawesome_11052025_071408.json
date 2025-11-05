@@ -1,0 +1,268 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 8,
+    "passes": 1,
+    "pending": 0,
+    "failures": 7,
+    "start": "2025-11-05T02:14:05.012Z",
+    "end": "2025-11-05T02:14:08.230Z",
+    "duration": 3218,
+    "testsRegistered": 8,
+    "passPercent": 12.5,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "2e95d78f-740c-4ee0-8acf-6c407ed11f38",
+      "title": "",
+      "fullFile": "cypress\\e2e\\clientDataManagement.cy.js",
+      "file": "cypress\\e2e\\clientDataManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+          "title": "Client Data Management APIs",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Create a new client",
+              "fullTitle": "Client Data Management APIs Create a new client",
+              "timedOut": null,
+              "duration": 920,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('POST', '/clients', {\n  type: 'Individual',\n  idType: 'NationalIdentity',\n  countryCode: 'SA',\n  phoneNumber: '500000001',\n  firstNameEn: 'John',\n  lastNameEn: 'Doe',\n  nameEn: 'John Doe',\n  nationalityCode: 'SA',\n  status: 'Active'\n}).then(res => {\n  expect(res.status).to.eq(201);\n  expect(res.body.created).to.be.true;\n  clientId = res.body.client.id;\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 201",
+                "estack": "AssertionError: expected 405 to equal 201\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:35:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 201\n"
+              },
+              "uuid": "3db101f5-4e6e-4a1e-b610-82a1aafe7f30",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get paginated clients",
+              "fullTitle": "Client Data Management APIs Get paginated clients",
+              "timedOut": null,
+              "duration": 357,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('GET', '/clients?page=1&size=5').then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.data).to.be.an('array');\n});",
+              "err": {
+                "message": "AssertionError: expected undefined to be an array",
+                "estack": "AssertionError: expected undefined to be an array\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:44:34)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": null
+              },
+              "uuid": "d1d2b820-b571-4ea5-b300-a3d2ad35a575",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get client by ID",
+              "fullTitle": "Client Data Management APIs Get client by ID",
+              "timedOut": null,
+              "duration": 224,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('GET', `/clients/${clientId}`).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.id).to.eq(clientId);\n});",
+              "err": {},
+              "uuid": "983ef8f4-3bad-45c1-91dd-674dc9362d2b",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update client",
+              "fullTitle": "Client Data Management APIs Update client",
+              "timedOut": null,
+              "duration": 275,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('PUT', `/clients/${clientId}`, {\n  type: 'Individual',\n  idType: 'NationalIdentity',\n  countryCode: 'SA',\n  phoneNumber: '500000001',\n  firstNameEn: 'John Updated',\n  lastNameEn: 'Doe',\n  nameEn: 'John Updated Doe',\n  nationalityCode: 'SA',\n  status: 'Active'\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.firstNameEn).to.eq('John Updated');\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 200",
+                "estack": "AssertionError: expected 405 to equal 200\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:67:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 200\n"
+              },
+              "uuid": "8da4421e-3d6d-4205-9f57-82a903dc47ae",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Update client status",
+              "fullTitle": "Client Data Management APIs Update client status",
+              "timedOut": null,
+              "duration": 298,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('PATCH', `/clients/${clientId}/status`, {\n  status: 'Blocked'\n}).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.status).to.eq('Blocked');\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 200",
+                "estack": "AssertionError: expected 405 to equal 200\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:74:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 200\n"
+              },
+              "uuid": "281986ec-a9d9-4728-b38f-71b117b2199e",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get client status by ID",
+              "fullTitle": "Client Data Management APIs Get client status by ID",
+              "timedOut": null,
+              "duration": 331,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('GET', `/clients/${clientId}/status`).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.status).to.be.oneOf(['Active', 'Blocked', 'Screening', 'Onboarding']);\n});",
+              "err": {
+                "message": "AssertionError: expected undefined to be one of [ Array(4) ]",
+                "estack": "AssertionError: expected undefined to be one of [ Array(4) ]\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:82:36)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": null
+              },
+              "uuid": "6d99f3bc-038a-4760-9d59-01ce1724eb9a",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Archive client",
+              "fullTitle": "Client Data Management APIs Archive client",
+              "timedOut": null,
+              "duration": 303,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('PATCH', `/clients/${clientId}/archive`).then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.isArchived).to.be.true;\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 200",
+                "estack": "AssertionError: expected 405 to equal 200\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:88:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 200\n"
+              },
+              "uuid": "ff1234ee-f77c-40c1-b75f-b63c999b4f74",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Get archived clients with cases",
+              "fullTitle": "Client Data Management APIs Get archived clients with cases",
+              "timedOut": null,
+              "duration": 354,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('GET', '/clients/archived-with-cases').then(res => {\n  expect(res.status).to.eq(200);\n  expect(res.body.data).to.be.an('array');\n});",
+              "err": {
+                "message": "AssertionError: expected undefined to be an array",
+                "estack": "AssertionError: expected undefined to be an array\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagement.cy.js:96:34)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": null
+              },
+              "uuid": "1ce48a50-943e-4956-be6e-860b05866565",
+              "parentUUID": "53d68478-8f92-401f-98e5-c2f75ec12dd9",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "983ef8f4-3bad-45c1-91dd-674dc9362d2b"
+          ],
+          "failures": [
+            "3db101f5-4e6e-4a1e-b610-82a1aafe7f30",
+            "d1d2b820-b571-4ea5-b300-a3d2ad35a575",
+            "8da4421e-3d6d-4205-9f57-82a903dc47ae",
+            "281986ec-a9d9-4728-b38f-71b117b2199e",
+            "6d99f3bc-038a-4760-9d59-01ce1724eb9a",
+            "ff1234ee-f77c-40c1-b75f-b63c999b4f74",
+            "1ce48a50-943e-4956-be6e-860b05866565"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3062,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

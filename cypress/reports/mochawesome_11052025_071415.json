@@ -1,0 +1,133 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 0,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-05T02:14:14.996Z",
+    "end": "2025-11-05T02:14:15.688Z",
+    "duration": 692,
+    "testsRegistered": 2,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5dd952e3-b34f-4a45-b49c-2c18d3910633",
+      "title": "",
+      "fullFile": "cypress\\e2e\\watchListManagement.cy.js",
+      "file": "cypress\\e2e\\watchListManagement.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "a2d8a3ce-cb14-49b7-997a-8c39a8c9c499",
+          "title": "Watchlist Management APIs",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Perform client screening against watchlists",
+              "fullTitle": "Watchlist Management APIs Perform client screening against watchlists",
+              "timedOut": null,
+              "duration": 318,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('POST', '/clients/screening', {\n  type: 'Individual',\n  idType: 'NationalIdentity',\n  countryCode: 'SA',\n  phoneNumber: '500000002',\n  firstNameEn: 'Watch',\n  lastNameEn: 'List',\n  nameEn: 'Watch List',\n  nationalityCode: 'SA',\n  allowAutoOnboarding: true\n}).then(res => {\n  expect(res.status).to.eq(201);\n  expect(res.body.created).to.be.true;\n  expect(res.body.client).to.have.property('id');\n  expect(res.body.matchCount).to.be.a('number');\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 201",
+                "estack": "AssertionError: expected 405 to equal 201\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/watchListManagement.cy.js:34:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 201\n"
+              },
+              "uuid": "bfac9bf3-3648-45a4-bd39-2ea6fb2cc223",
+              "parentUUID": "a2d8a3ce-cb14-49b7-997a-8c39a8c9c499",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Bulk insert clients for ongoing monitoring",
+              "fullTitle": "Watchlist Management APIs Bulk insert clients for ongoing monitoring",
+              "timedOut": null,
+              "duration": 326,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "apiRequest('POST', '/clients/bulk', {\n  clients: [{\n    type: 'Individual',\n    idType: 'NationalIdentity',\n    countryCode: 'SA',\n    phoneNumber: '500000003',\n    firstNameEn: 'Bulk',\n    lastNameEn: 'Client1',\n    nameEn: 'Bulk Client1',\n    nationalityCode: 'SA'\n  }, {\n    type: 'Individual',\n    idType: 'NationalIdentity',\n    countryCode: 'SA',\n    phoneNumber: '500000004',\n    firstNameEn: 'Bulk',\n    lastNameEn: 'Client2',\n    nameEn: 'Bulk Client2',\n    nationalityCode: 'SA'\n  }],\n  duplicateMode: 'Skip'\n}).then(res => {\n  expect(res.status).to.eq(201);\n  expect(res.body).to.have.property('message');\n});",
+              "err": {
+                "message": "AssertionError: expected 405 to equal 201",
+                "estack": "AssertionError: expected 405 to equal 201\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/watchListManagement.cy.js:67:28)\n    at getRet (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122341:20)\n    at tryCatcher (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122352:66)\n    at Context.then (https://qa-getdal-1a.getdal.sa/__cypress/runner/cypress_runner.js:122603:21)",
+                "diff": "- 405\n+ 201\n"
+              },
+              "uuid": "465fbbd6-2ae4-49b4-9f44-412039aa0ef0",
+              "parentUUID": "a2d8a3ce-cb14-49b7-997a-8c39a8c9c499",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "bfac9bf3-3648-45a4-bd39-2ea6fb2cc223",
+            "465fbbd6-2ae4-49b4-9f44-412039aa0ef0"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 644,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.3.1"
+    }
+  }
+}
