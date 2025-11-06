@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-06T14:17:15.037Z",
+    "end": "2025-11-06T14:17:26.848Z",
+    "duration": 11811,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "23414a11-8af0-482e-8fd7-b379aad16631",
+      "title": "",
+      "fullFile": "cypress\\e2e\\watchListManagementUI.cy.js",
+      "file": "cypress\\e2e\\watchListManagementUI.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "9f328133-d0b5-46ca-820b-c8482439fbf7",
+          "title": "Client Data Management UI Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login",
+              "fullTitle": "Client Data Management UI Tests login",
+              "timedOut": null,
+              "duration": 3515,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://qa-getdal-1a.getdal.sa/login');\ncy.get('#_r_0_-form-item').type('admin@getdal.com');\ncy.get('#_r_1_-form-item > input').type('WDR*7123412a');\ncy.get('body > div > div > form > button').click();\ncy.url().should('include', 'https://qa-getdal-1a.getdal.sa/');",
+              "err": {},
+              "uuid": "12f8b26f-d4ed-4546-b5e5-04a90433799c",
+              "parentUUID": "9f328133-d0b5-46ca-820b-c8482439fbf7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should navigate to Watch List Management module",
+              "fullTitle": "Client Data Management UI Tests Should navigate to Watch List Management module",
+              "timedOut": null,
+              "duration": 4112,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath('/html/body/div/div/div[2]/div/div[2]/ul/ul/li[2]/a/button').click();\ncy.url().should('include', 'https://qa-getdal-1a.getdal.sa/watchlists');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `/html/body/div/div/div[2]/div/div[2]/ul/ul/li[2]/a/button`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `/html/body/div/div/div[2]/div/div[2]/ul/ul/li[2]/a/button`, but never found it.\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/watchListManagementUI.cy.js:12:9)",
+                "diff": null
+              },
+              "uuid": "b7894ac5-8b7e-4945-bd94-a3a2b629243f",
+              "parentUUID": "9f328133-d0b5-46ca-820b-c8482439fbf7",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should create a new client",
+              "fullTitle": "Client Data Management UI Tests Should create a new client",
+              "timedOut": null,
+              "duration": 4103,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#radix-_r_47b_').click();\ncy.get('#radix-_r_47c_ > div').click();\ncy.get('#_r_488_-form-item').type('1');\ncy.get('#_r_48n_-form-item').select('Nafith');\ncy.get('#_r_48j_-form-item').type('Arkam');\ncy.xpath('//*[@id=\"radix-_r_25_\"]/div[3]/form/div[14]/button[2]').click();\ncy.contains('ol > li').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#radix-_r_47b_`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#radix-_r_47b_`, but never found it.\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/watchListManagementUI.cy.js:18:9)",
+                "diff": null
+              },
+              "uuid": "7e5be0d8-508f-440a-a014-3dfa97e38527",
+              "parentUUID": "9f328133-d0b5-46ca-820b-c8482439fbf7",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "12f8b26f-d4ed-4546-b5e5-04a90433799c"
+          ],
+          "failures": [
+            "b7894ac5-8b7e-4945-bd94-a3a2b629243f",
+            "7e5be0d8-508f-440a-a014-3dfa97e38527"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 11730,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

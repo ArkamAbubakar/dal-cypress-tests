@@ -1,0 +1,153 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 3,
+    "passes": 1,
+    "pending": 0,
+    "failures": 2,
+    "start": "2025-11-06T14:16:50.788Z",
+    "end": "2025-11-06T14:17:04.093Z",
+    "duration": 13305,
+    "testsRegistered": 3,
+    "passPercent": 33.33333333333333,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5f6d9e2a-4d1b-484e-a56c-ed1e8bb12b07",
+      "title": "",
+      "fullFile": "cypress\\e2e\\clientDataManagementUI.cy.js",
+      "file": "cypress\\e2e\\clientDataManagementUI.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "0664b817-a328-4bab-839d-6acfd818a096",
+          "title": "Client Data Management UI Tests",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login",
+              "fullTitle": "Client Data Management UI Tests login",
+              "timedOut": null,
+              "duration": 4982,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.visit('https://qa-getdal-1a.getdal.sa/login');\ncy.get('#_r_0_-form-item').type('admin@getdal.com');\ncy.get('#_r_1_-form-item > input').type('WDR*7123412a');\ncy.get('body > div > div > form > button').click();\ncy.url().should('include', 'https://qa-getdal-1a.getdal.sa/');",
+              "err": {},
+              "uuid": "42d9e465-2fd7-49bf-8706-28a0b846a768",
+              "parentUUID": "0664b817-a328-4bab-839d-6acfd818a096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should navigate to Client Data Management module",
+              "fullTitle": "Client Data Management UI Tests Should navigate to Client Data Management module",
+              "timedOut": null,
+              "duration": 4131,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.xpath('/html/body/div/div/div[2]/div/div[2]/ul/ul/li[3]/a/button').click();\ncy.url().should('include', 'https://qa-getdal-1a.getdal.sa/clients');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `/html/body/div/div/div[2]/div/div[2]/ul/ul/li[3]/a/button`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `/html/body/div/div/div[2]/div/div[2]/ul/ul/li[3]/a/button`, but never found it.\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagementUI.cy.js:12:9)",
+                "diff": null
+              },
+              "uuid": "a4d0b767-52ff-450f-8b5e-68c244a43919",
+              "parentUUID": "0664b817-a328-4bab-839d-6acfd818a096",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Should create a new client",
+              "fullTitle": "Client Data Management UI Tests Should create a new client",
+              "timedOut": null,
+              "duration": 4114,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.get('#radix-_r_1t_').click();\ncy.get('#radix-_r_1u_ > div').click();\ncy.get('#_r_q0_-form-item').select('NationalIdentity');\ncy.get('#_r_q2_-form-item').type('1000000001');\ncy.get('#_r_q3_-form-item').type('Arkam');\ncy.get('#_r_q6_-form-item').type('Arkam');\ncy.xpath('//*[@id=\"radix-_r_2u_\"]/div[3]/form/div[3]/div/button[2]').click();\ncy.contains('ol > li').should('be.visible');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#radix-_r_1t_`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#radix-_r_1t_`, but never found it.\n    at Context.eval (webpack://ayn-automation/./cypress/e2e/clientDataManagementUI.cy.js:17:9)",
+                "diff": null
+              },
+              "uuid": "729127d6-d52b-496a-93aa-e947dfaa62ed",
+              "parentUUID": "0664b817-a328-4bab-839d-6acfd818a096",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "42d9e465-2fd7-49bf-8706-28a0b846a768"
+          ],
+          "failures": [
+            "a4d0b767-52ff-450f-8b5e-68c244a43919",
+            "729127d6-d52b-496a-93aa-e947dfaa62ed"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 13227,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true,
+        "timestamp": "mmddyyyy_HHMMss"
+      },
+      "version": "6.3.1"
+    }
+  }
+}

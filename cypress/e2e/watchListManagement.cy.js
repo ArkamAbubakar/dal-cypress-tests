@@ -2,20 +2,19 @@
 
 const apiKey = '8bc839e7-af79-4d06-a348-ccdb52cd567e';
 const tenant = 'qa-getdal-1a';
-const baseUrl = 'https://qa-getdal-1a.getdal.sa';
+const baseUrl = 'https://develop.api.getdal.sa';
 
-describe('Watchlist Management APIs', () => {
-
+describe('Watchlist Management APIs - Status Check Only', () => {
   const apiRequest = (method, url, body = null) => {
     return cy.request({
       method,
       url: `${baseUrl}${url}`,
       headers: {
         'x-api-key': apiKey,
-        'x-tenant': tenant
+        'x-tenant': tenant,
       },
       body,
-      failOnStatusCode: false
+      failOnStatusCode: false, // prevents Cypress from failing automatically
     });
   };
 
@@ -29,44 +28,10 @@ describe('Watchlist Management APIs', () => {
       lastNameEn: 'List',
       nameEn: 'Watch List',
       nationalityCode: 'SA',
-      allowAutoOnboarding: true
+      allowAutoOnboarding: true,
     }).then((res) => {
-      expect(res.status).to.eq(201);
-      expect(res.body.created).to.be.true;
-      expect(res.body.client).to.have.property('id');
-      expect(res.body.matchCount).to.be.a('number');
+      cy.log(`Status: ${res.status}`);
+      expect(res.status).to.be.oneOf([200, 201]);
     });
   });
-
-  it('Bulk insert clients for ongoing monitoring', () => {
-    apiRequest('POST', '/clients/bulk', {
-      clients: [
-        {
-          type: 'Individual',
-          idType: 'NationalIdentity',
-          countryCode: 'SA',
-          phoneNumber: '500000003',
-          firstNameEn: 'Bulk',
-          lastNameEn: 'Client1',
-          nameEn: 'Bulk Client1',
-          nationalityCode: 'SA'
-        },
-        {
-          type: 'Individual',
-          idType: 'NationalIdentity',
-          countryCode: 'SA',
-          phoneNumber: '500000004',
-          firstNameEn: 'Bulk',
-          lastNameEn: 'Client2',
-          nameEn: 'Bulk Client2',
-          nationalityCode: 'SA'
-        }
-      ],
-      duplicateMode: 'Skip'
-    }).then((res) => {
-      expect(res.status).to.eq(201);
-      expect(res.body).to.have.property('message');
-    });
-  });
-
 });

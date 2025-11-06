@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', () => {
+  cy.visit('https://qa-getdal-1a.getdal.sa/login');
+  cy.get('#_r_0_-form-item').type('admin@getdal.com');
+  cy.get('#_r_1_-form-item > input').type('WDR*7123412a');
+  cy.get('body > div > div > form > button').click();
+  cy.url().should('include', 'https://qa-getdal-1a.getdal.sa/'); // adjust to your actual post-login URL
+});
